@@ -1,0 +1,121 @@
+/* Main Calendar Background */
+.vuecal {
+  background-color: #ffffff !important; /* White background for main calendar */
+}
+
+/* Title Bar */
+.vuecal__title-bar {
+  background-color: #f8683b !important; /* Orange title bar */
+  color: #ffffff !important; /* White text for title bar */
+}
+
+/* Calendar Cells */
+.vuecal__cell {
+  background-color: #ffffff !important; /* White cell background */
+  border: 1px solid #ececec !important; /* Light gray border for cells */
+}
+
+/* Hour Lines */
+.vuecal__time-markers .vuecal__marker,
+.vuecal__day-view .vuecal__marker {
+  border-top: 1px solid #f0f0f0 !important; /* Light gray hour line */
+  height: 20px; /* Set the height to make lines more prominent */
+  opacity: 1 !important; /* Ensure time lines are visible */
+}
+
+.vuecal__time-markers .vuecal__marker--hour,
+.vuecal__day-view .vuecal__marker--hour {
+  border-top: 1px solid #f8683b !important; /* Orange hour markers */
+  opacity: 1 !important;
+}
+
+.vuecal__cell-split {
+  border-top: 1px solid #f5d0bf !important; /* Light orange for half-hour markers */
+}
+
+/* Highlight Current Date */
+.vuecal__cell--today,
+.vuecal__cell--current {
+  background-color: #ffe6d6 !important; /* Light orange for today’s cell */
+  border: 1px solid #f8683b !important; /* Orange border for today */
+}
+
+/* Selected Cell */
+.vuecal__cell--selected {
+  background-color: #ffd4b8 !important; /* Slightly darker orange for selected cells */
+}
+
+.vuecal__cell--selected:before {
+  border-color: #f8683b !important; /* Orange border for selected cells */
+}
+
+/* Event Counts */
+.vuecal__cell-events-count {
+  background-color: #f8683b !important; /* Orange for event count background */
+  color: #ffffff !important; /* White text for event count */
+}
+
+.vuecal__now-line {
+  color: #f8683b;
+}
+
+/* Highlight Cells on Drag */
+.vuecal__cell--highlighted:not(.vuecal__cell--has-splits),
+.vuecal__cell-split--highlighted {
+  background-color: #ffd9c2 !important; /* Light orange for highlighted cells */
+}
+
+/* Arrows and View Buttons */
+.vuecal__arrow.vuecal__arrow--highlighted,
+.vuecal__view-btn.vuecal__view-btn--highlighted {
+  background-color: rgba(
+    248,
+    104,
+    59,
+    0.25
+  ) !important; /* Light orange for highlighted arrows */
+  color: #ffffff !important; /* White text for highlighted arrows */
+}
+
+/* Hide Week Numbers */
+.vuecal__week-numbers {
+  display: none !important; /* Remove week numbers */
+}
+
+/* Custom event styling */
+.vuecal__event {
+  background-color: #ffffff; /* White background for events */
+  border: 1px solid #f8683b; /* Orange border for distinction */
+  color: #333; /* Dark text for readability */
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Event header styling */
+.vuecal__event-header {
+  background-color: #f8683b; /* Orange header for events */
+  color: #ffffff; /* White text on the header */
+  padding: 4px 6px;
+  font-weight: bold;
+  font-size: 12px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Event body styling */
+.vuecal__event-body {
+  padding: 5px 6px;
+  color: #555; /* Darker text for event details */
+}
+
+/* Optional: Hover effect for events */
+.vuecal__event:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Adds shadow on hover */
+}
