@@ -25,8 +25,6 @@
             </div>
             <div class="list-info">
               <h3>{{ adventure.name }}</h3>
-              <p>Members: {{ adventure.friends?.length || 0 }}</p>
-              <p>Activities: {{ adventure.activities?.length || 0 }}</p>
             </div>
             <div class="adventure-actions">
               <button @click.stop="toggleDropdown(adventure.id)">⋮</button>
@@ -112,8 +110,8 @@
             class="sad-kitten-image"
           />
           <p class="no-adventure-text">
-            You currently are not in any adventures, create or join one to start
-            exploring!
+            You currently do not have any calendars, create or join one to start
+            planning!
           </p>
         </div>
       </div>
