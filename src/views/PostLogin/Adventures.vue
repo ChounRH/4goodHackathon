@@ -4,9 +4,9 @@
     <div class="adventure-container">
       <!-- Left section containing list of adventures and actions -->
       <div class="adventure-left">
-        <h3>Your Adventures</h3>
+        <h3>Your Calendars</h3>
         <button class="new-adventure-btn" @click="toggleNewAdventureForm">
-          + New Adventure
+          + New Calendar
         </button>
         <div class="divider-line-2"></div>
         <div class="AdventureListsContainer">
@@ -867,6 +867,12 @@ export default {
   background-color: white;
   color: #2c3f50;
   font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+
+
+.vuecal {
+  height: 100%; /* Set to a larger value or 100% to fill the parent */
+  min-height: 700px; /* Optional: Set a minimum height */
 }
 
 .modal-body input::placeholder,
