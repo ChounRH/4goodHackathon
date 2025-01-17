@@ -41,6 +41,11 @@ npm run serve #initialise vue project server
 ```
 Using your browser, go to http://localhost:8080/ to begin using TaskHive.
 
+To test our web application, please login via our tester Gmail account! (Do remember to login via Google!)
+Email: taskhive28@gmail.com
+Password: Taskhive123!
+
+
 Note: If there are any missing dependencies / libraries, terminal should prompt that they are missing and you can install them from there
 
 
