@@ -68,11 +68,22 @@ exports.sendScheduledReminders = functions.pubsub
 
               // Prepare email
               console.log(`Preparing email for: ${emailRecipients.join(",")}`);
+              const formatDate = (date) => {
+                const options = {
+                  weekday: "long",
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                };
+                return new Intl.DateTimeFormat("en-US", options).format(new Date(date));
+              };
               const mailOptions = {
                 from: "teamlohkey@gmail.com",
                 to: emailRecipients.join(","), // Join all friends' emails into a single string
                 subject: `Reminder: ${activity.title || "Untitled Activity"}`,
-                text: `Hello Team Lohkey!\n\nDon't forget your activity "${activity.title || "Untitled Activity"}"!\nIt starts at ${activity.start} and ends at ${activity.end}.\n\nDescription: ${activity.description || "No description provided."}\n\nLocation: ${activity.location || "No location provided."}`,
+                text: `Hello!\n\nDon't forget your activity "${activity.title || "Untitled Activity"}"!\n\nIt starts at ${formatDate(activity.start)} and ends at ${formatDate(activity.end)}.\n\nDescription: ${activity.description || "No description provided."}\n\nLocation: ${activity.location || "No location provided."}`,
               };
 
               try {
