@@ -19,6 +19,7 @@
     "ccxt": "^2.9.16",
     "firebase": "^9.23.0",
     "node-polyfill-webpack-plugin": "^2.0.1",
+    "nodemailer": "^6.9.16",
     "primeicons": "^7.0.0",
     "primevue": "^4.1.0",
     "vue": "^3.2.45",

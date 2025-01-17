@@ -179,6 +179,20 @@
               placeholder="Enter location"
             />
 
+            <!-- Reminders setting -->
+            <label for="reminder">Reminder</label>
+            <br />
+            <select v-model="editActivity.reminder" id="reminder">
+              <option value="0">No reminder</option>
+              <option value="5">5 minutes before</option>
+              <option value="10">10 minutes before</option>
+              <option value="15">15 minutes before</option>
+              <option value="30">30 minutes before</option>
+              <option value="60">1 hour before</option>
+              <option value="1440">1 day before</option>
+            </select>
+            <br />
+
             <label for="description" placeholder="Description"
               >Description</label
             >
@@ -521,6 +535,7 @@ export default {
           `${this.editActivityDate}T${this.editActivityStartTime}`
         ),
         end: new Date(`${this.editActivityDate}T${this.editActivityEndTime}`),
+        reminder: this.editActivity.reminder,
       };
 
       const index = this.calendarEvents.findIndex(
@@ -536,6 +551,7 @@ export default {
             ...event,
             start: event.start.toISOString(),
             end: event.end.toISOString(),
+            reminder: event.reminder.toISOString(),
           }));
           await updateDoc(adventureDoc, { activities: updatedActivities });
           this.currentAdventure.activities = updatedActivities;
@@ -821,6 +837,7 @@ export default {
   width: 500px;
   max-height: 90vh;
   overflow-y: auto;
+  margin-top: 80px;
 }
 
 /* Modal header styling */
@@ -1069,5 +1086,13 @@ export default {
   max-height: 300px;
   resize: vertical;
   width: 100%;
+}
+
+#reminder {
+  width: 460px;
+  height: 45px;
+  margin: 0 0 10px 0;
+  border-radius: 5px;
+  border: 2px solid #bbb
 }
 </style>

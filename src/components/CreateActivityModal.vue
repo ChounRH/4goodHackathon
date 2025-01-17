@@ -51,7 +51,7 @@
           <label for="reminder">Reminder</label>
           <br>
           <select v-model="activityReminder" id="reminder">
-            <option value="5">No reminder</option>
+            <option value="0">No reminder</option>
             <option value="5">5 minutes before</option>
             <option value="10">10 minutes before</option>
             <option value="15">15 minutes before</option>
@@ -105,7 +105,7 @@ export default {
         this.activityDate.trim() !== "" &&
         this.startTime.trim() !== "" &&
         this.endTime.trim() !== "" &&
-        this.reminderTiming.trim() !== "" && // new code
+        this.activityReminder !== null && 
         this.isTimeRangeValid // Only valid if startTime < endTime
       );
     },
@@ -129,6 +129,7 @@ export default {
       this.isModalVisible = false;
       this.$emit("close");
     },
+
     // Helper function to compare start and end times
     compareTimes(start, end) {
       const [startHours, startMinutes] = start.split(":").map(Number);
@@ -140,6 +141,7 @@ export default {
         (endHours === startHours && endMinutes > startMinutes)
       );
     },
+
     // Validates the time range and sets error message if invalid
     validateTimeRange() {
       if (!this.isTimeRangeValid) {
@@ -148,6 +150,19 @@ export default {
         this.timeError = "";
       }
     },
+
+    // reset form
+    resetForm() {
+      this.activityName = ""; // Clear the activity title
+      this.activityDescription = ""; // Clear the activity description
+      this.activityDate = new Date().toISOString().substr(0, 10); // Reset to today's date
+      this.startTime = "19:30"; // Reset to default start time
+      this.endTime = "22:00"; // Reset to default end time
+      this.activityLocation = ""; // Clear the location
+      this.activityReminder = "0"; // Reset to "No reminder"
+      this.timeError = ""; // Clear any time validation error
+    },
+
     // Saves the activity data if form is valid, then resets and closes modal
     saveActivity() {
       if (!this.isFormValid) return;
@@ -155,12 +170,28 @@ export default {
       const activityStart = new Date(`${this.activityDate}T${this.startTime}`);
       const activityEnd = new Date(`${this.activityDate}T${this.endTime}`);
 
+      // Calculate the reminder time
+      const reminderOffset = this.activityReminder * 60 * 1000; // Convert minutes to milliseconds
+      const reminderTime = new Date(activityStart.getTime() - reminderOffset);
+
+      // Handle cases where the reminder falls on the previous day
+      let reminderReadable;
+      if (reminderTime.toDateString() !== activityStart.toDateString()) {
+        // Reminder is on the previous day
+        reminderReadable = `Previous day at ${reminderTime.toTimeString().slice(0, 5)}`;
+      } else {
+        // Reminder is on the same day
+        reminderReadable = `${reminderTime.toTimeString().slice(0, 5)}`;
+      }
+
       const newActivity = {
         title: this.activityName,
         start: activityStart.toISOString(),
         end: activityEnd.toISOString(),
         location: this.activityLocation,
         description: this.activityDescription,
+        reminder: reminderTime.toISOString(), // ISO format for reminder
+        reminderReadable, // Readable string for debugging or display
       };
 
       this.$emit("save-activity", newActivity); // Emit the new activity to parent
