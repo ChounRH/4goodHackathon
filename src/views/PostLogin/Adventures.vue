@@ -4,9 +4,9 @@
     <div class="adventure-container">
       <!-- Left section containing list of adventures and actions -->
       <div class="adventure-left">
-        <h3>Your Adventures</h3>
+        <h3>Your Calendars</h3>
         <button class="new-adventure-btn" @click="toggleNewAdventureForm">
-          + New Adventure
+          + New Calendar
         </button>
         <div class="divider-line-2"></div>
         <div class="AdventureListsContainer">
@@ -25,8 +25,6 @@
             </div>
             <div class="list-info">
               <h3>{{ adventure.name }}</h3>
-              <p>Members: {{ adventure.friends?.length || 0 }}</p>
-              <p>Activities: {{ adventure.activities?.length || 0 }}</p>
             </div>
             <div class="adventure-actions">
               <button @click.stop="toggleDropdown(adventure.id)">⋮</button>
@@ -112,8 +110,8 @@
             class="sad-kitten-image"
           />
           <p class="no-adventure-text">
-            You currently are not in any adventures, create or join one to start
-            exploring!
+            You currently do not have any calendars, create or join one to start
+            planning!
           </p>
         </div>
       </div>
@@ -867,6 +865,12 @@ export default {
   background-color: white;
   color: #2c3f50;
   font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+
+
+.vuecal {
+  height: 100%; /* Set to a larger value or 100% to fill the parent */
+  min-height: 700px; /* Optional: Set a minimum height */
 }
 
 .modal-body input::placeholder,

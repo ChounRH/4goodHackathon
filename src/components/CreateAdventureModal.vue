@@ -5,19 +5,19 @@
       <div class="modal-header">
         <button class="cancel-button" @click="closeModal">Cancel</button>
         <!-- Conditional title based on editing state -->
-        <h3 v-if="isEditing" class="modal-title-1">Edit Adventure</h3>
-        <h3 v-else class="modal-title-2">New Adventure</h3>
+        <h3 v-if="isEditing" class="modal-title-1">Edit Calendar</h3>
+        <h3 v-else class="modal-title-2">New Calendar</h3>
       </div>
       <div class="divider-line"></div>
 
       <div class="modal-body">
         <form @submit.prevent="saveAdventure">
           <!-- Adventure name input field -->
-          <label>Adventure Name</label>
+          <label>Calendar name</label>
           <input
             v-model="adventureName"
             type="text"
-            placeholder="Name this Adventure"
+            placeholder="Name this Calendar"
             required
           />
 
@@ -26,7 +26,7 @@
           <input
             v-model="adventureDescription"
             type="text"
-            placeholder="Give this Adventure a description"
+            placeholder="Give this calendar a description"
           />
 
           <!-- Friend email input with add button -->
