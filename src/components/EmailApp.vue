@@ -1,29 +1,25 @@
 <template>
-    <div class="container mx-auto p-6">
-      <h1 class="text-2xl font-bold mb-6">Email Application</h1>
-  
-      <!-- Display Email Threads -->
+  <div class="email-app-container">
+    <div class="email-app-header">
+      <h1>Email Application</h1>
+    </div>
+    <div class="email-app-content">
       <EmailThreads
         v-if="!selectedThreadId && threads.length"
         :threads="threads"
         :loading="loading"
         @select-thread="handleSelectThread"
       />
-  
-      <!-- Display Email Details -->
       <ThreadDetails
         v-else-if="selectedThreadId"
         :messages="messages"
         @back="handleBack"
       />
-  
-      <!-- Loading State -->
       <p v-else-if="loading" class="text-gray-500">Loading email threads...</p>
-  
-      <!-- Empty State -->
-      <p v-else class="text-gray-500">No email threads available.</p>
+      <p v-else>No email threads available.</p>
     </div>
-  </template>
+  </div>
+</template>
   
   <script>
   import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
@@ -84,8 +80,22 @@
   </script>
   
   <style scoped>
-  .container {
-    max-width: 800px;
-  }
-  </style>
+.email-app-container {
+  margin-top: 80px; /* Account for navbar height */
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.email-app-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+.email-app-content {
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+</style>
   

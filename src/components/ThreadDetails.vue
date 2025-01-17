@@ -1,24 +1,14 @@
 <template>
-    <div class="email-details">
-      <button
-        @click="$emit('back')"
-        class="mb-4 p-2 bg-blue-500 text-white rounded"
-      >
-        Back to Threads
-      </button>
-      <div v-if="messages.length">
-        <div v-for="message in messages" :key="message.id" class="email-content mb-6">
-          <div class="email-header mb-4">
-            <h3 class="text-lg font-semibold">{{ message.subject || "No Subject" }}</h3>
-            <p class="text-sm text-gray-500">From: {{ message.sender }}</p>
-            <p class="text-sm text-gray-500">Date: {{ formatDate(message.date) }}</p>
-          </div>
-          <div class="email-body" v-html="cleanBody(message.body)"></div>
-        </div>
-      </div>
-      <p v-else class="text-gray-500">No message details available.</p>
+  <div class="thread-details-container">
+    <button @click="$emit('back')" class="back-button">Back</button>
+    <div v-for="message in messages" :key="message.id" class="thread-message">
+      <h3>{{ message.subject }}</h3>
+      <p><strong>From:</strong> {{ message.sender }}</p>
+      <p><strong>Date:</strong> {{ message.date }}</p>
+      <div class="thread-message-body">{{ message.body }}</div>
     </div>
-  </template>
+  </div>
+</template>
   
   <script>
   export default {
@@ -50,21 +40,29 @@
   </script>
   
   <style scoped>
-  .email-details {
-    max-width: 800px;
-    margin: auto;
-  }
-  .email-content {
-    border-bottom: 1px solid #e5e7eb;
-    padding-bottom: 16px;
-  }
-  .email-header {
-    border-bottom: 1px solid #e5e7eb;
-    padding-bottom: 8px;
-  }
-  .email-body {
-    margin-top: 16px;
-    line-height: 1.6;
-  }
-  </style>
+.thread-details-container {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.thread-message {
+  margin-bottom: 20px;
+}
+.back-button {
+  margin-bottom: 10px;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.back-button:hover {
+  background-color: #0056b3;
+}
+</style>
   
