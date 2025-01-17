@@ -11,17 +11,17 @@
       <ul class="options">
         <li>
           <router-link to="/discovery" active-class="active-tab" :class="{ disabled: isModalVisible }">
-            Discovery
+            Email Summary
           </router-link>
         </li>
         <li>
           <router-link to="/bookmark" active-class="active-tab" :class="{ disabled: isModalVisible }">
-            Bookmark
+            To-do List
           </router-link>
         </li>
         <li>
           <router-link to="/adventures" active-class="active-tab" :class="{ disabled: isModalVisible }">
-            Adventures
+            Calendar
           </router-link>
         </li>
       </ul>
